@@ -1,0 +1,9 @@
+# Bundle layer contributed by dsh-plugin-project-log.
+# The plugin is inserted as a root-level row; its system-prompt section and
+# `project_log` tool are what the profile actually gets.
+- insert:
+    - id: project-log
+      name: dsh-plugin-project-log
+      config:
+        injectRules: auto
+        keep: 10

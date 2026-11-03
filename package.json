@@ -1,0 +1,50 @@
+{
+  "name": "dsh-plugin-project-log",
+  "version": "0.1.0",
+  "description": "PROJECT_LOG.md project memory for DeepSeek Harness: inject the convention, then check, archive and scaffold project logs from one tool. Zero dependencies, no build step.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "project-log",
+    "project-memory",
+    "agents-md",
+    "archive",
+    "markdown"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yangstarkone/dsh-plugin-project-log.git"
+  },
+  "homepage": "https://github.com/yangstarkone/dsh-plugin-project-log#readme",
+  "bugs": {
+    "url": "https://github.com/yangstarkone/dsh-plugin-project-log/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.0 <0.3.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
