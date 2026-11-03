@@ -170,6 +170,26 @@ test('init writes the skeleton once and never overwrites', () => {
   }
 });
 
+test('auto injection defers to an AGENTS.md that already documents PROJECT_LOG', () => {
+  const home = sandbox();
+  const previous = process.env.DSH_HOME;
+  process.env.DSH_HOME = home;
+  try {
+    const noRules = [];
+    apply({ systemPrompt: { section: (section) => noRules.push(section) }, tools: { register: () => {} } }, {});
+    assert.equal(noRules.length, 1, 'injects when AGENTS.md is absent');
+
+    writeFileSync(join(home, 'AGENTS.md'), '## 项目记忆（PROJECT_LOG.md）\n', 'utf8');
+    const withRules = [];
+    apply({ systemPrompt: { section: (section) => withRules.push(section) }, tools: { register: () => {} } }, {});
+    assert.equal(withRules.length, 0, 'skips when AGENTS.md already mentions PROJECT_LOG');
+  } finally {
+    if (previous === undefined) delete process.env.DSH_HOME;
+    else process.env.DSH_HOME = previous;
+    rmSync(home, { recursive: true, force: true });
+  }
+});
+
 test('apply registers one tool and, unless disabled, the rules section', () => {
   const sections = [];
   const tools = [];
