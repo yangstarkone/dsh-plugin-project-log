@@ -2,7 +2,7 @@
 
 把 `PROJECT_LOG.md` 项目记忆约定做成 DeepSeek Harness（dsh）插件：**自动注入规则 + 一个 `project_log` 工具**，换电脑只装一次，不用再手抄 `AGENTS.md` 段落。
 
-零依赖、无构建步骤、MIT。
+零依赖、无构建步骤、MIT 许可。
 
 ## 为什么做成插件
 
